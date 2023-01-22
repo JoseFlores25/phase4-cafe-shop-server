@@ -26,7 +26,15 @@ $ cd phase4-cafe-shop-server
 then
 
 ```bash
-bundel install  to download all the gem
-then
-rails s to run the server for the backend
+bundel install
+&&
+rails s: run the backend on http://localhost:3000
+```
+
+For the Frontend
+
+```bash
+$ git clone https://github.com/JoseFlores25/phase4-cafe-shop-client
+$ cd phase4-cafe-shop-client
+npm start  run the frontend on http://localhost:3001
 ```

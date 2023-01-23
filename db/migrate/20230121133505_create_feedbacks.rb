@@ -3,8 +3,8 @@ class CreateFeedbacks < ActiveRecord::Migration[6.1]
     create_table :feedbacks do |t|
       t.string :title
       t.string :description
-      t.references :coffee, null: false, foreign_key: true
-      t.references :user, null: false, foreign_key: true
+      t.references :coffee, foreign_key: {on_delete: :cascade}
+      t.references :user, foreign_key: {on_delete: :cascade}
 
       t.timestamps
     end

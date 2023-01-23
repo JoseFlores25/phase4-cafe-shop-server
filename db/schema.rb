@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2023_01_21_133505) do
   create_table "coffees", force: :cascade do |t|
     t.string "name"
     t.string "price"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_coffees_on_user_id"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2023_01_21_133505) do
   create_table "feedbacks", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.integer "coffee_id", null: false
-    t.integer "user_id", null: false
+    t.integer "coffee_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coffee_id"], name: "index_feedbacks_on_coffee_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2023_01_21_133505) do
 
   create_table "toppings", force: :cascade do |t|
     t.string "name"
-    t.integer "coffee_id", null: false
+    t.integer "coffee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coffee_id"], name: "index_toppings_on_coffee_id"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2023_01_21_133505) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "coffees", "users"
-  add_foreign_key "feedbacks", "coffees"
-  add_foreign_key "feedbacks", "users"
-  add_foreign_key "toppings", "coffees"
+  add_foreign_key "coffees", "users", on_delete: :cascade
+  add_foreign_key "feedbacks", "coffees", on_delete: :cascade
+  add_foreign_key "feedbacks", "users", on_delete: :cascade
+  add_foreign_key "toppings", "coffees", on_delete: :cascade
 end

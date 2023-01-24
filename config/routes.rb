@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
 
   # User routes
-  post "/user", to: "users#create"
-
+  resources :users, only: [:index, :create, :update, :destroy]
   # Coffe routes
   post "/user/coffees", to: "coffees#create"
   post "/user/coffees/remove", to: "coffees#destroy"
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
   # Feedback routes
   post "/feedback", to: "feedbacks#create"
   get "/feedback", to: "feedbacks#show"
-  
+
   # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 end

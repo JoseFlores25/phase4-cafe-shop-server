@@ -36,5 +36,5 @@ For the Frontend
 ```bash
 $ git clone https://github.com/JoseFlores25/phase4-cafe-shop-client
 $ cd phase4-cafe-shop-client
-npm start  run the frontend on http://localhost:3001
+yarn start run the frontend on http://localhost:3001
 ```

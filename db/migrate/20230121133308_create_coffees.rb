@@ -3,6 +3,7 @@ class CreateCoffees < ActiveRecord::Migration[6.1]
     create_table :coffees do |t|
       t.string :name
       t.string :price
+      t.string :store
 
       t.timestamps
     end

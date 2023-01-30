@@ -49,6 +49,6 @@ class CoffeesController < ApplicationController
     private
 
     def coffee_params
-        params.permit(:name, :price, :description, :image,  :coffee_type, :user_id)
+        params.permit(:name, :price, :description, :image,  :coffee_type, :user_id, :store)
     end
 end

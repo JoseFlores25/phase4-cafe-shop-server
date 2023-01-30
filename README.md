@@ -4,7 +4,7 @@
 
 This is a Coffee review application. The idea came from the experience I had with coffee.
 Normally I like homemade coffee. Because my experience with outside coffee hasn’t been good.
-So I came up with the idea that people could post about their coffee and get a reviews for others to see.
+I decided to came up with the idea that people could post about their coffee and get a reviews for others to see.
 
 ## Project Requirements
 

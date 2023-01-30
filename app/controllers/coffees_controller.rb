@@ -16,7 +16,7 @@ class CoffeesController < ApplicationController
         coffee = Coffee.find(params[:id])
         if coffee
             coffee.update(coffee_params)
-            coffees = Coffee.where(user_id:params[:user_id]).reverse_order
+            coffees = Coffee.all().reverse_order
             render json: coffees
         else
             render json: {error: 'coffee does not exist'}
@@ -27,7 +27,7 @@ class CoffeesController < ApplicationController
         coffee = Coffee.find(params[:id])
         if coffee
             coffee.delete
-            coffees = Coffee.where(user_id:params[:user_id]).reverse_order
+            coffees = Coffee.all().reverse_order
             render json: coffees, status: :created
         else
             render json: {error: 'coffee does not exist'}

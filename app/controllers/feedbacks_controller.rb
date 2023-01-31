@@ -1,10 +1,14 @@
 class FeedbacksController < ApplicationController
     def index
-        render json: Feedback.all
+        feedbacks = Feedback.where(coffee_id: params[:coffee_id]).reverse_order
+        if feedbacks
+            render json: feedbacks
+        else
+            render json: {error: 'feedbacks does not exist'}
+        end
     end
 
     def show
-        puts "feedback route, #{params}"
         feedbacks = Feedback.where(coffee_id: params[:coffee_id]).reverse_order
         if feedbacks
             render json: feedbacks
@@ -23,12 +27,15 @@ class FeedbacksController < ApplicationController
     end
 
     def destroy
-        feedbacks = Feedback.find(params[:id])
-        if feedbacks
+        feedback = Feedback.find(params[:id])
+        puts "feedback[:user_id] #{feedback[:user_id] == params[:user_id]}"
+        if feedback && feedback[:user_id] == params[:user_id]
             feedback.destroy
-            render json: { success: 'feedback deleted'}
-        else
-            render json: {error: 'feedback does not exist'}
+            feedbacks = Feedback.where(coffee_id: params[:coffee_id]).reverse_order
+            render json: feedbacks
+        elsif !feedback
+            render json: {error: 'feedback does not exist'}, status: :bad_request
+        else render json: {error: 'you cant delete this feedback, it does not belog to you'}, status: :bad_request
         end
     end
 
@@ -45,6 +52,6 @@ class FeedbacksController < ApplicationController
     private
 
     def feedback_params
-        params.permit(:title, :description, :user_id, :coffee_id)
+        params.permit(:title, :description, :id, :user_id, :coffee_id)
     end
 end

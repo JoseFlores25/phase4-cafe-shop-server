@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   # User routes
   resources :users, only: [:index, :create, :update, :destroy]
+  # Feedback routes
+  resources :feedbacks, only: [:index, :show, :create, :update, :delete]
+  post"/feedbacks/remove", to: "feedbacks#destroy"
+
   # Coffe routes
   post "/user/coffees", to: "coffees#create"
   post "/user/coffees/remove", to: "coffees#destroy"
@@ -14,11 +18,5 @@ Rails.application.routes.draw do
   # Topping routes
   post "/topping", to: "toppings#create"
   get "/topping", to: "toppings#show"
-
-  # Feedback routes
-  post "/feedback", to: "feedbacks#create"
-  get "/feedback", to: "feedbacks#show"
-
-  # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 end

@@ -23,18 +23,21 @@ $ git clone https://github.com/JoseFlores25/phase4-cafe-shop-server
 $ cd phase4-cafe-shop-server
 ```
 
-then
+- run the backend on http://localhost:3000
 
 ```bash
-bundel install
+bundle install
 &&
-rails s: run the backend on http://localhost:3000
+rails db:migrate
+&&
+rails s
 ```
 
-For the Frontend
+To run the frontend on http://localhost:3001
 
 ```bash
 $ git clone https://github.com/JoseFlores25/phase4-cafe-shop-client
 $ cd phase4-cafe-shop-client
-yarn start run the frontend on http://localhost:3001
+$ yarn install
+$ yarn start
 ```

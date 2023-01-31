@@ -16,14 +16,16 @@ I decided to came up with the idea that people could post about their coffee and
 - Have at least three different client-side routes using React Router. Be sure to include a nav bar or other UI element that allows users to navigate between routes.
 - Implement authentication/authorization, including password protection. A user should be able to log in to the site with a secure password and stay logged in via user ID in the session hash.
 
-## Installation
+## Setup
+
+Start by cloning (or forking) the project from (github)
 
 ```bash
 $ git clone https://github.com/JoseFlores25/phase4-cafe-shop-server
 $ cd phase4-cafe-shop-server
 ```
 
-- run the backend on http://localhost:3000
+To run the backend on http://localhost:3000
 
 ```bash
 bundle install

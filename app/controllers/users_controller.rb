@@ -12,15 +12,6 @@ class UsersController < ApplicationController
         end
     end
 
-    def get_all_coffees
-        coffee = Coffee.find(params[:id])
-        if coffee
-            render json: coffee
-        else
-            render json: {error: 'coffee does not exist'}
-        end
-    end
-
     def update
         user = User.find(params[:id])
         if user

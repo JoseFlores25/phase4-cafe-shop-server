@@ -8,14 +8,6 @@ class FeedbacksController < ApplicationController
         end
     end
 
-    def show
-        feedbacks = Feedback.where(coffee_id: params[:coffee_id]).reverse_order
-        if feedbacks
-            render json: feedbacks
-        else
-            render json: {error: 'feedbacks does not exist'}
-        end
-    end
     def update
         feedbacks = Feedback.find(params[:id])
         if feedbacks
@@ -27,15 +19,11 @@ class FeedbacksController < ApplicationController
     end
 
     def destroy
-        feedback = Feedback.find(params[:id])
-        puts "feedback[:user_id] #{feedback[:user_id] == params[:user_id]}"
-        if feedback && feedback[:user_id] == params[:user_id]
+        feedback = Feedback.find_by(params[:id])
+        if feedback
             feedback.destroy
-            feedbacks = Feedback.where(coffee_id: params[:coffee_id]).reverse_order
-            render json: feedbacks
-        elsif !feedback
-            render json: {error: 'feedback does not exist'}, status: :bad_request
-        else render json: {error: 'you cant delete this feedback, it does not belog to you'}, status: :bad_request
+            head :no_content
+        else render json: {error: 'Could not find this feedback'}, status: :bad_request
         end
     end
 

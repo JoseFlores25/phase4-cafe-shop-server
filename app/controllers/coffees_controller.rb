@@ -1,9 +1,5 @@
 class CoffeesController < ApplicationController
     def index
-        render json: Coffee.all
-    end
-
-    def show
         coffees = Coffee.all().reverse_order
         if coffees
             render json: coffees
